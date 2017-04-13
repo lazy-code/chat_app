@@ -1,0 +1,36 @@
+{
+  "name": "chat_app",
+  "version": "1.0.0",
+  "description": "Chat App using Socket.IO",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p",
+    "start" : "webpack-dev-server"
+  },
+  "author": "Alex Ben",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^0.28.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "style-loader": "^0.16.1",
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.4.2"
+  },
+  "dependencies": {
+    "express": "*",
+    "prop-types": "^15.5.8",
+    "react": "*",
+    "react-bootstrap": "^0.30.8",
+    "react-dom": "*",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "socket.io": "*",
+    "socket.io-client": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lazy-code/chat_app"
+  }
+}
