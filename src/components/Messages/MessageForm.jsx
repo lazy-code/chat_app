@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
@@ -11,14 +12,31 @@ class MessageForm extends Component {
   };
 
   handleChange = (e) => {
-    const value = e.target.value.trim();
-    const validationState = (value.length < 2) ? 'error' : 'success';
+    const value = e.target.value;
+    const validationState = (value.trim().length === 0) ? 'error' : 'success';
     this.setState({ value, validationState });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    if (this.state.validationState === 'error' ||
+        this.state.validationState === null) {
+      this.setState({ validationState: 'error' });
+      return false;
+    }
+    this.props.emit('messageAdded', {
+      timeStamp: Date.now(),
+      text: this.state.value
+    });
+    this.setState({
+      value: '',
+      validationState: null
+    });
   };
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <FormGroup
           controlId="formBasicText"
           validationState={this.state.validationState}
@@ -27,14 +45,18 @@ class MessageForm extends Component {
           <FormControl
             type="text"
             value={this.state.value}
-            placeholder="Enter text"
+            placeholder="Type a message and press Enter"
             onChange={this.handleChange}
           />
-          <FormControl.Feedback />
         </FormGroup>
       </form>
     );
   }
 }
+
+MessageForm.propTypes ={
+  // From App Component
+  emit: PropTypes.func.isRequired
+};
 
 export default MessageForm;
