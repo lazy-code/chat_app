@@ -26,7 +26,8 @@ class MessageForm extends Component {
     }
     this.props.emit('messageAdded', {
       timeStamp: Date.now(),
-      text: this.state.value
+      text: this.state.value,
+      user: this.props.user
     });
     this.setState({
       value: '',
@@ -38,7 +39,7 @@ class MessageForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <FormGroup
-          controlId="formBasicText"
+          controlId="messageForm"
           validationState={this.state.validationState}
         >
           <ControlLabel>Enter a message</ControlLabel>

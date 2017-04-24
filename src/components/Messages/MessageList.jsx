@@ -23,6 +23,7 @@ class MessageList extends Component {
 }
 
 MessageList.propTypes = {
+  // From App Component
   messages: PropTypes.array.isRequired
 };
 

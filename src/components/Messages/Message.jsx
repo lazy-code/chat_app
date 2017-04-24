@@ -24,13 +24,14 @@ class Message extends Component {
 
     return (
       <div>
-        {time} - {message.text}
+        {time} <b>{message.user}</b> : {message.text}
       </div>
     );
   }
 }
 
 Message.propTypes = {
+  // From MessageList Component
   message: PropTypes.object.isRequired
 };
 
